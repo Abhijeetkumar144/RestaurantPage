@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhi Foods</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #d4af37;
+            --secondary-color: #8b0000;
+            --dark-color: #333333;
+            --light-color: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-color);
+        }
+        
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-scrolled {
+            background-color: #000 !important;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('/images/main.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .menu-item {
+            transition: transform 0.3s ease;
+            border: none;
+            overflow: hidden;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-img {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .menu-item:hover .menu-img {
+            transform: scale(1.05);
+        }
+        
+        .price {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #6d0000;
+            border-color: #6d0000;
+        }
+        
+        .bg-light-custom {
+            background-color: var(--light-color);
+        }
+        
+        .testimonial-card {
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .reservation-form {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .gallery-img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+        
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .opening-hours {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .opening-hours li {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <h2 class="fw-bold">ABHI <span class="text-warning">INDIAN</span></h2>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reservation">Reservation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-3 fw-bold mb-4">Authentic Indian Cuisine</h1>
+                    <p class="lead mb-5">Experience the taste of India with our handcrafted dishes made from traditional recipes and the finest ingredients.</p>
+                    <a href="#reservation" class="btn btn-primary btn-lg me-3">Reserve a Table</a>
+                    <a href="#menu" class="btn btn-outline-light btn-lg">View Menu</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light-custom">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="section-title">Our Story</h2>
+                    <p class="lead">Family recipes passed down for generations</p>
+                    <p>Founded in 2025, Abhi India brings the authentic flavors of India  to your table. Our chefs use traditional methods and the freshest ingredients to create dishes that transport you straight to the Indian countryside.</p>
+                    <p>Every dish tells a story - from our homemade . and decadent desserts. We take pride in our craft and invite you to experience the difference that passion and tradition make.</p>
+                    <div class="d-flex mt-4">
+                        <div class="me-4">
+                            <h3 class="text-primary">24+</h3>
+                            <p>Years of Experience</p>
+                        </div>
+                        <div class="me-4">
+                            <h3 class="text-primary">50+</h3>
+                            <p>Traditional Dishes</p>
+                        </div>
+                        <div>
+                            <h3 class="text-primary">100%</h3>
+                            <p>Authentic Taste</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="/images/dinner-table.jpg" alt="Indian chef a professional food" class="img-fluid rounded mb-4">
+                        </div>
+                        <div class="col-6">
+                            <img src="/images/restaurant-interior.jpg" alt="" class="img-fluid rounded mb-4">
+                            <img src="/images/chef.jpg" alt="" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title">Our Specialties</h2>
+            <p class="text-center lead mb-5">Discover our authentic Indian dishes</p>
+            
+            <ul class="nav nav-pills justify-content-center mb-5" id="menuTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="starters-tab" data-bs-toggle="pill" data-bs-target="#starters" type="button">Starters</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="mains-tab" data-bs-toggle="pill" data-bs-target="#mains" type="button">Main Courses</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="menuTabsContent">
+                <!-- Starters -->
+                <div class="tab-pane fade show active" id="starters" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card menu-item h-100">
+                                <img src="/images/samosa.jpg" class="card-img-top menu-img" alt="Bruschetta with fresh tomatoes and basil on a wooden board">
+                                <div class="card-body">
+                                    <h5 class="card-title">Samosa</h5>
+                                    <p class="card-text">Crispy golden pastry filled with spiced potatoes and peas. Served with chutney.<br> One bite, and you're hooked – the magic of samosa!</p>
+                                    <p class="price">₹10</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card menu-item h-100">
+                                <img src="/images/french.jpg" class="card-img-top menu-img" alt="Crispy golden potato fries">
+                                <div class="card-body">
+                                    <h5 class="card-title">French Fries</h5>
+                                    <p class="card-text">Crispy golden potato fries, lightly seasoned with salt and served with ketchup or spicy masala dip. A classic favorite for all ages.</p>
+                                    <p class="price">₹50</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card menu-item h-100">
+                                <img src="/images/pakode.jpg" class="card-img-top menu-img" alt="Crispy, deep-fried fritters">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pakode</h5>
+                                    <p class="card-text">Crispy, deep-fried fritters made with gram flour batter and spices — a perfect tea-time snack or rainy day favorite. Served hot with mint and tamarind chutneys.</p>
+                                    <p class="price">₹40.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Courses -->
+                <div class="tab-pane fade" id="mains" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card menu-item h-100">
+                                <img src="/images/roti.jpg" class="card-img-top menu-img" alt="Roti">
+                                <div class="card-body">
+                                    <h5 class="card-title">Roti</h5>
+                                    <p class="card-text">wheat roti.</p>
+                                    <p class="price">₹15</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card menu-item h-100">
+                                <img src="/images/dosasambar.jpg" class="card-img-top menu-img" alt="dosa">
+                                <div class="card-body">
+                                    <h5 class="card-title">Dosa</h5>
+                                    <p class="card-text">Dosa.</p>
+                                    <p class="price">₹60</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card menu-item h-100">
+                                <img src="/images/egg.jpg" class="card-img-top menu-img" alt="egg">
+                                <div class="card-body">
+                                    <h5 class="card-title">Egg</h5>
+                                    <p class="card-text">Egg.</p>
+                                    <p class="price">₹15</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional menu tabs would go here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5 bg-light">
+        <div class="container py-5">
+            <h2 class="section-title">Our Gallery</h2>
+            <p class="text-center lead mb-5">A glimpse of our restaurant and dishes</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="gallery-item">
+                        <img src="/images/thali.jpg" class="gallery-img" alt="thali">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="gallery-item">
+                        <img src="/images/biryani.jpg" class="gallery-img" alt="biryani">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="gallery-item">
+                        <img src="/images/chicken-skewers.jpg" class="gallery-img" alt="Chicken">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p class="text-center lead mb-5">Authentic experiences from our guests</p>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card p-4 bg-light h-100">
+                        <div class="d-flex mb-3">
+                            <span class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <p class="fst-italic">"The best Indian food ."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div>
+                                <h6 class="mb-0">Abhijeet Kumar</h6>
+                                <small class="text-muted">Food Critic</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card p-4 bg-light h-100">
+                        <div class="d-flex mb-3">
+                            <span class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                        <p class="fst-italic">"The atmosphere was perfect for our anniversary dinner. Romantic lighting, excellent service, and incredible food."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div>
+                                <h6 class="mb-0">Abhijeet Kumar</h6>
+                                <small class="text-muted">Regular Customer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card p-4 bg-light h-100">
+                        <div class="d-flex mb-3">
+                            <span class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </span>
+                        </div>
+                        <p class="fst-italic">"I've been coming here for years and the quality never disappoints. Their pizza is the closest to Naples I've found."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div>
+                                <h6 class="mb-0">Abhijeet kumar</h6>
+                                <small class="text-muted">Food Enthusiast</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="py-5 bg-primary bg-opacity-10">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="reservation-form">
+                        <h2 class="section-title">Make a Reservation</h2>
+                        <p class="text-center mb-4">Book your table online and we'll confirm instantly</p>
+                        
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="date" class="form-label">Date</label>
+                                    <input type="date" class="form-control" id="date" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="time" class="form-label">Time</label>
+                                    <input type="time" class="form-control" id="time" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="guests" class="form-label">Number of Guests</label>
+                                    <select class="form-select" id="guests" required>
+                                        <option value="1">1 Person</option>
+                                        <option value="2">2 People</option>
+                                        <option value="3">3 People</option>
+                                        <option value="4">4 People</option>
+                                        <option value="5">5 People</option>
+                                        <option value="6">6+ People</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="special" class="form-label">Special Requests</label>
+                                <textarea class="form-control" id="special" rows="3"></textarea>
+                            </div>
+                           <button type="button" class="btn btn-primary w-100" onclick="sendReservationEmail()">Book Now</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container py-5">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="text-center lead mb-5">We'd love to hear from you</p>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="rounded-circle bg-primary d-inline-flex p-3 mb-3">
+                                <i class="fas fa-map-marker-alt fa-2x text-white"></i>
+                            </div>
+                            <h5 class="card-title">Address</h5>
+                            <p class="card-text">New Delhi,<br>New Delhi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="rounded-circle bg-primary d-inline-flex p-3 mb-3">
+                                <i class="fas fa-phone fa-2x text-white"></i>
+                            </div>
+                            <h5 class="card-title">Phone</h5>
+                            <p class="card-text">+912345678923</p>
+                            <p class="card-text">+912344567899</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="rounded-circle bg-primary d-inline-flex p-3 mb-3">
+                                <i class="fas fa-envelope fa-2x text-white"></i>
+                            </div>
+                            <h5 class="card-title">Email</h5>
+                            <p class="card-text">abhijeetkumar0765@gmail.com</p>
+                            <p class="card-text">abhijeetkumar0765@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4 class="text-warning mb-4">Abhi</h4>
+                    <p>Experience authentic Indian cuisine in the heart of the city. We pride ourselves on traditional recipes, fresh ingredients, and warm hospitality.</p>
+                    <div class="mt-4">
+                        <a href="https://github.com/Abhijeetkumar144" class="social-icon"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="text-warning mb-4">Opening Hours</h5>
+                    <ul class="opening-hours">
+                        <li class="d-flex justify-content-between">
+                            <span>Monday - Thursday</span>
+                            <span>10:00 AM - 10:00 PM</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <span>Friday - Saturday</span>
+                            <span>9:30 AM - 10:00 PM</span>
+                        </li>
+                        <li class="d-flex justify-content-between">
+                            <span>Sunday</span>
+                            <span>10:30 PM - 9:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-warning mb-4">Newsletter</h5>
+                    <p>Subscribe to our newsletter for special offers and updates</p>
+                    <form>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                            <button class="btn btn-warning" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2023 ABHI. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-light me-3">Privacy Policy</a>
+                    <a href="#" class="text-light">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        
+    
+    //for reg
+    function sendReservationEmail() {
+        var name = document.getElementById("name").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var date = document.getElementById("date").value;
+        var time = document.getElementById("time").value;
+        var guests = document.getElementById("guests").value;
+        var phone = document.getElementById("phone").value.trim();
+        var special = document.getElementById("special").value.trim();
+
+        // Validation
+        if (!name || !email || !date || !time || !guests || !phone) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        // Email format check
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        // Phone format check: digits only, 10 characters
+        var phonePattern = /^\d{10}$/;
+        if (!phonePattern.test(phone)) {
+            alert("Please enter a valid 10-digit phone number (numbers only).");
+            return;
+        }
+
+        // If all valid, build Gmail link
+        var subject = "Reservation Request from " + name;
+        var body = "Name: " + name + "\n" +
+                   "Email: " + email + "\n" +
+                   "Date: " + date + "\n" +
+                   "Time: " + time + "\n" +
+                   "Number of Guests: " + guests + "\n" +
+                   "Phone: " + phone + "\n" +
+                   "Special Requests: " + special;
+
+        var gmailLink = "https://mail.google.com/mail/?view=cm&fs=1" +
+                        "&to=abhithings0767@gmail.com" +
+                        "&su=" + encodeURIComponent(subject) +
+                        "&body=" + encodeURIComponent(body);
+
+        window.open(gmailLink, "_blank");
+    }
+
+
+
+
+
+
+
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    </script>
+</body>
+</html>
