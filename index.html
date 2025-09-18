@@ -601,8 +601,14 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        //for date validate
+     document.addEventListener("DOMContentLoaded", function () {
+        // Get today's date in YYYY-MM-DD format
+        var today = new Date().toISOString().split("T")[0];
+        // Set the minimum selectable date to today
+        document.getElementById("date").setAttribute("min", today);
+    });
         
-    
     //for reg
     function sendReservationEmail() {
         var name = document.getElementById("name").value.trim();
@@ -613,7 +619,6 @@
         var phone = document.getElementById("phone").value.trim();
         var special = document.getElementById("special").value.trim();
         
-document.getElementById("date").setAttribute('min', new Date().toISOString().split('T')[0]);
         // Validation
         if (!name || !email || !date || !time || !guests || !phone) {
             alert("Please fill in all required fields.");
@@ -643,30 +648,16 @@ document.getElementById("date").setAttribute('min', new Date().toISOString().spl
                    "Number of Guests: " + guests + "\n" +
                    "Phone: " + phone + "\n" +
                    "Special Requests: " + special;
+var mailtoLink = "mailto:abhithings0767@gmail.com" +
+                     "?subject=" + encodeURIComponent(subject) +
+                     "&body=" + encodeURIComponent(body);
 
-      var gmailLink = "https://mail.google.com/mail/?view=cm&fs=1" +
-                    "&to=abhithings0767@gmail.com" + // This is your email
-                    "&su=" + encodeURIComponent(subject) +
-                    "&body=" + encodeURIComponent(body);
-
-    // Mobile/PC Compatibility - Using `window.location.href` for better mobile support
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-        // For mobile, use location.href to open Gmail in the default mail client or app
-        window.location.href = gmailLink;
-    } else {
-        // For desktop, open Gmail in a new tab
-        window.open(gmailLink, "_blank");
-    }
+    // Open in same tab (works everywhere)
+    window.location.href = mailtoLink;
 }
+     
 
-
-
-
-
-
-
-
-        // Navbar scroll effect
+   // Navbar scroll effect
     window.addEventListener('scroll', function () {
     const navbar = document.querySelector('.navbar');
     const navbarCollapse = document.querySelector('.navbar-collapse');
